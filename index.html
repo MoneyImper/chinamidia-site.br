@@ -1,119 +1,163 @@
-m<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>CHINAMIDIA FITNESS</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0f0f0f;
-  color: white;
-  text-align: center;
-}
-
-header {
-  background: #111;
-  padding: 30px;
-}
-
-h1 {
-  color: #00ff88;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chinamidia Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }body {
+  background: #0b0f0c;
+  color: #fff;
+  padding: 20px;
 }
 
 .container {
-  padding: 20px;
+  max-width: 420px;
+  margin: auto;
 }
 
-.box {
-  background: #1a1a1a;
-  margin: 15px;
-  padding: 20px;
-  border-radius: 15px;
+.header {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-button {
+.header h1 {
+  color: #00ff88;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.header p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.card {
+  background: #121712;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(0,255,136,0.1);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #1c241c;
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #00ff88;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.exercise {
+  margin: 8px 0;
+  padding: 10px;
+  background: #1a211a;
+  border-radius: 10px;
+}
+
+.footer-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 14px;
   background: #00ff88;
   border: none;
-  padding: 12px 20px;
-  margin: 10px;
-  border-radius: 10px;
+  border-radius: 14px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.resultado {
-  margin-top: 20px;
-  background: #222;
-  padding: 20px;
-  border-radius: 15px;
-}
-
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  padding: 15px;
-  border-radius: 50%;
-  color: white;
-  text-decoration: none;
-}
-</style>
-
+  </style>
 </head>
-
 <body>
-
-<header>
-  <h1>CHINAMIDIA FITNESS</h1>
-  <p>Monte seu treino automático</p>
-</header>
-
-<div class="container">
-
-  <div class="box">
-    <h2>Escolha seu objetivo:</h2>
-
-    <button onclick="gerarTreino('massa')">Ganhar Massa</button>
-    <button onclick="gerarTreino('emagrecer')">Emagrecer</button>
-  </div>
-
-  <div id="resultado" class="resultado"></div>
-
+  <div class="container"><div class="header">
+  <h1>💪 CHINAMIDIA FITNESS</h1>
+  <p>Treinos personalizados para seu objetivo</p>
 </div>
 
-<a class="whatsapp" href="https://wa.me/5563992357389">💬</a>
+<div class="card">
+  <h3>Seus dados</h3>
+  <input type="number" placeholder="Idade">
+  <input type="number" placeholder="Peso (kg)">
+  <input type="number" placeholder="Altura (cm)">
+  <select>
+    <option>Nível</option>
+    <option>Iniciante</option>
+    <option>Intermediário</option>
+    <option>Avançado</option>
+  </select>
+</div>
 
-<script>
-function gerarTreino(tipo) {
-  let treino = "";
+<div class="card">
+  <h3>Escolha seu objetivo</h3>
+  <div class="buttons">
+    <button class="btn" onclick="gerarTreino('massa')">💪 Massa</button>
+    <button class="btn" onclick="gerarTreino('emagrecer')">🔥 Emagrecer</button>
+  </div>
+</div>
 
-  if (tipo === "massa") {
-    treino = `
-    <h3>🔥 Treino para Ganho de Massa</h3>
-    Peito: Supino 4x10<br>
-    Costas: Puxada 4x10<br>
-    Perna: Agachamento 4x10<br>
-    Bíceps: Rosca 3x12<br>
-    Tríceps: Corda 3x12
-    `;
-  }
+<div id="treino"></div>
 
-  if (tipo === "emagrecer") {
-    treino = `
-    <h3>🔥 Treino para Emagrecimento</h3>
-    Cardio: 20 min corrida<br>
-    Circuito: 3x<br>
-    Burpee 10x<br>
-    Abdominal 15x<br>
-    Agachamento 15x
-    `;
-  }
+  </div>  <script>
+    function gerarTreino(tipo) {
+      const treinoDiv = document.getElementById('treino');
 
-  document.getElementById("resultado").innerHTML = treino;
-}
-</script>
+      if (tipo === 'emagrecer') {
+        treinoDiv.innerHTML = `
+          <div class="card">
+            <h3>🔥 Treino para Emagrecimento</h3>
+            <p>⏱️ Tempo: 30 min | Descanso: 30s</p>
 
-</body>
+            <div class="exercise">🏃 Corrida - 20 min</div>
+            <div class="exercise">Burpee - 10 reps</div>
+            <div class="exercise">Abdominal - 15 reps</div>
+            <div class="exercise">Agachamento - 15 reps</div>
+
+            <button class="footer-btn">Começar treino</button>
+          </div>
+        `;
+      } else {
+        treinoDiv.innerHTML = `
+          <div class="card">
+            <h3>💪 Treino para Massa</h3>
+            <p>⏱️ Tempo: 45 min | Descanso: 60s</p>
+
+            <div class="exercise">Supino - 10 reps</div>
+            <div class="exercise">Agachamento - 12 reps</div>
+            <div class="exercise">Bíceps - 10 reps</div>
+            <div class="exercise">Tríceps - 10 reps</div>
+
+            <button class="footer-btn">Começar treino</button>
+          </div>
+        `;
+      }
+    }
+  </script></body>
 </html>
