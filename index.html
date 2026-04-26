@@ -1,73 +1,119 @@
-<!DOCTYPE html>
+m<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>CHINAMIDIA</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #1a0033;
-      color: white;
-      text-align: center;
-    }
-    header {
-      background: #6A0DAD;
-      padding: 40px;
-      font-size: 30px;
-      font-weight: bold;
-    }
-    section {
-      padding: 20px;
-    }
-    .box {
-      background: #2a004d;
-      margin: 15px;
-      padding: 20px;
-      border-radius: 15px;
-    }
-    button {
-      background: white;
-      color: #6A0DAD;
-      border: none;
-      padding: 10px 20px;
-      font-weight: bold;
-      border-radius: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>CHINAMIDIA FITNESS</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f0f0f;
+  color: white;
+  text-align: center;
+}
+
+header {
+  background: #111;
+  padding: 30px;
+}
+
+h1 {
+  color: #00ff88;
+}
+
+.container {
+  padding: 20px;
+}
+
+.box {
+  background: #1a1a1a;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+button {
+  background: #00ff88;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.resultado {
+  margin-top: 20px;
+  background: #222;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  padding: 15px;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+}
+</style>
+
 </head>
 
 <body>
 
 <header>
-  CHINAMIDIA
+  <h1>CHINAMIDIA FITNESS</h1>
+  <p>Monte seu treino automático</p>
 </header>
 
-<section>
-  <div class="box">
-    <h2>Controle Financeiro</h2>
-    <p>Anote tudo que ganha e gasta.</p>
-  </div>
+<div class="container">
 
   <div class="box">
-    <h2>Reserva de Emergência</h2>
-    <p>Guarde de 3 a 6 meses do seu custo.</p>
+    <h2>Escolha seu objetivo:</h2>
+
+    <button onclick="gerarTreino('massa')">Ganhar Massa</button>
+    <button onclick="gerarTreino('emagrecer')">Emagrecer</button>
   </div>
 
-  <div class="box">
-    <h2>Investimentos</h2>
-    <p>Invista todo mês, mesmo pouco.</p>
-  </div>
+  <div id="resultado" class="resultado"></div>
 
-  <div class="box">
-    <h2>Renda Extra</h2>
-    <p>Venda, trabalhe ou use a internet.</p>
-  </div>
+</div>
 
-  <br>
-  <button>Começar Agora</button>
+<a class="whatsapp" href="https://wa.me/5563992357389">💬</a>
 
-</section>
+<script>
+function gerarTreino(tipo) {
+  let treino = "";
+
+  if (tipo === "massa") {
+    treino = `
+    <h3>🔥 Treino para Ganho de Massa</h3>
+    Peito: Supino 4x10<br>
+    Costas: Puxada 4x10<br>
+    Perna: Agachamento 4x10<br>
+    Bíceps: Rosca 3x12<br>
+    Tríceps: Corda 3x12
+    `;
+  }
+
+  if (tipo === "emagrecer") {
+    treino = `
+    <h3>🔥 Treino para Emagrecimento</h3>
+    Cardio: 20 min corrida<br>
+    Circuito: 3x<br>
+    Burpee 10x<br>
+    Abdominal 15x<br>
+    Agachamento 15x
+    `;
+  }
+
+  document.getElementById("resultado").innerHTML = treino;
+}
+</script>
 
 </body>
 </html>
